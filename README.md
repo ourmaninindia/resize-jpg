@@ -1,4 +1,4 @@
-resize-jpg
+# resize-jpg
 
 As the name suggests this script resizes jpg files and does so as a batch. All files in the current directory are first checked on valid file names i.e. extra spaces are removed, space are replaced by hyphens and underscores are removed in the original file. They are then resized to the size passed at terminal level and given a new file name in the format new-file-name_size.jpg   
 
