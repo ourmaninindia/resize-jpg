@@ -9,9 +9,10 @@ resize-jpg -size 768
 e.g. assuming there is only one jpg file in the current directory called 'new_file name .jpg', the command resize-jpg -size 768 would result in the two files new-file-name.jpg and new-file-name_768.jpg
 
 
-## Prerequisite 
-### Perl: Should you have a problem running a Perl script I have added a bash shell script that does the same with a lesser amount of file name validating.
-### ImageMagick : This may need to be installed from source as the jpeg delegate library needs to be installed on your system. In case of problems, like I had, see https://www.drupal.org/node/1002616 
+## Prerequisites 
+Perl: Should you have a problem running a Perl script I have added a bash shell script that does the same with a lesser amount of file name validating.
+
+ImageMagick : This may need to be installed from source as the jpeg delegate library needs to be installed on your system. In case of problems, like I had, see https://www.drupal.org/node/1002616 
 
 ## Contributing
 Alfred Tuinman is Our Man in India and can be reached at alfred@ourmaninindia.com
