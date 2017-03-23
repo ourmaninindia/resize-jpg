@@ -1,0 +1,62 @@
+#!/usr/bin/perl -w
+
+# purpose of script     : resize images
+# variable required     : width as a numerical
+# scope                 : all images in the directory you are in 
+# created on            : March 23, 2017
+# created by            : Alfred Tuinman
+
+use strict;
+use Getopt::Long;
+
+my $size   = 0;
+
+my $result = GetOptions(
+    "size=i" => \$size,
+    ) or die "Size needs to be numeric!\n";
+
+die "Please pass the -size parameter!" unless ($size > 0);
+
+#my $size = $ARGV[0];
+#if ($size != ) {
+#    print "Size as a variable is a required parameter";
+#    exit;
+#}
+
+# select the jpg files without trailing digits in the file name
+my @files = <*[a-z].jpg>;
+
+# clean up current file names for possible problems
+foreach my $file (@files) {
+
+    if($file =~/s*$/){
+        my $new_name = $file;
+        # convert hypen to space
+        $new_name =~ s/-/ /g; 
+        # convert underscore to space
+        $new_name =~ s/_/ /g; 
+        # remove duplicate spaces
+        $new_name =~ s/ +/ /;
+        # replace space with hyphen
+        $new_name =~ s/ /-/g; 
+        rename $file, $new_name
+    }
+}
+
+
+
+# do a fresh select
+@files = <*[a-z].jpg>;
+
+foreach my $file (@files) {
+
+    my ($prefix,$suffix)  = split /\./, $file;
+    my $new_name = $prefix.'_'.$size.'.'.$suffix; 
+    `convert $file -resize $size $new_name`;
+    
+    if ($? == -1) {
+        print "Error converting $file: $! \n";
+    } else {
+        print "converting $file to $new_name\n";
+    }
+}
